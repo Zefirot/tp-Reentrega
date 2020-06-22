@@ -285,21 +285,21 @@ public class Empresa {
 			throw new RuntimeException("La id proporcionada no se encuentra registrada");
 		}
 		
+		for(String ids : transportes.keySet()) {
+			System.out.println(ids);
+		}
 		
 		for(String ids : transportes.keySet()) { //Se busca el transporte
 			
 			if(ids.equals(id) && transportes.get(ids).tieneMercaderia()) {  //Se comprueba que el transporte cumpla con lo pedido
 				
 				transportes.get(ids).iniciarViaje();
-				
-			}else {
-				//System.out.println(id);
-				//System.out.println(transportes.ge);
-				System.out.println(transportes.get(ids).tieneMercaderia());
-				throw new RuntimeException("El transporte solicitado no contiene mercaderia cargada");
+				return;
 			}
 			
 		}
+		
+		throw new RuntimeException("El transporte solicitado no contiene mercaderia cargada");
 		
 		
 	}
