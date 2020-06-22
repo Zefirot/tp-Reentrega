@@ -51,7 +51,7 @@ public class Empresa {
 	
 	public int agregarDepTercerizFrio(double capacidad, double costoPorTonelada) {
 		
-		Deposit nuevo = new Deposit(capacidad, true, true, costoPorTonelada); //Se ponen los valores true porque ya se sabe que es frio y tercerizado
+		Deposit nuevo = new Deposit(capacidad, true, false, costoPorTonelada); //Se ponen los valores true porque ya se sabe que es frio y tercerizado
 		
 		depositos.add(nuevo);
 		

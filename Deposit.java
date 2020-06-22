@@ -128,8 +128,8 @@ public class Deposit {
 	public boolean getRefrigeracion() {
 		return refrigeracion;
 	}
-	public boolean esTercerizado(){
-		return tercerizado;
+	public boolean esTercerizado(){//Como false significa que es tercerizado entonces lo retorno de esta manera.
+		return !tercerizado; 
 	}
 	public double getCapacidadMax() {
 		return capacidadMax;
