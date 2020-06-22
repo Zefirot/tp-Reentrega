@@ -1,6 +1,6 @@
 package empresa;
 
-public abstract class TransporteAbs {
+public abstract class TransportAbs {
 
 	public abstract void cargarPaquete(Paquet paquete);
 	

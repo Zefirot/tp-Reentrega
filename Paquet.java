@@ -25,6 +25,12 @@ public class Paquet {
 		this.refrigeracion=refrigeracion;
 		this.destino=destino;
 		this.cadena=new StringBuilder();
+		
+		this.cadena.append("Destino:"+destino).append(" ")
+		.append("Peso:"+String.valueOf(peso)).append(" ")
+		.append("Volumen:"+String.valueOf(volumen)).append(" ")
+		.append("Refrigeracion:"+refrigeracion).append(" ");
+		
 	}
 	
 	//Gets
@@ -43,11 +49,7 @@ public class Paquet {
 	
 	@Override
 	public String toString() {
-		return cadena.append("Destino:"+destino).append(" ")
-				.append("Peso:"+String.valueOf(peso)).append(" ")
-				.append("Volumen:"+String.valueOf(volumen)).append(" ")
-				.append("Refrigeracion:"+refrigeracion).append(" ")
-				.toString();
+		return cadena.toString();
 	}
 	
 }

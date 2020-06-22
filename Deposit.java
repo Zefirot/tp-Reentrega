@@ -141,4 +141,16 @@ public class Deposit {
 		return paquetes.size()!=0? true:false;
 	}
 	
+	public static void main(String[] args) {
+		Deposit n = new Deposit(10,true,true,0);
+		
+		Paquet nuevo = new Paquet("Buenos Aires", 5,3,true);
+		
+		
+		
+		n.agregarPaquete(nuevo);
+		System.out.println(n.toString());
+		System.out.println(n.toString());
+	}
+	
 }

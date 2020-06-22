@@ -2,7 +2,7 @@ package empresa;
 
 import java.util.ArrayList;
 
-public class Transport extends TransporteAbs{
+public class Transport extends TransportAbs{
  
 	private ArrayList<Paquet> paquetes; 
 	private double cargaMax;
@@ -18,9 +18,7 @@ public class Transport extends TransporteAbs{
 	private double volumenTotalPaquetes;
 	private double costoTonelada;
 	private double costoTotal;
-	
 
-	
 	public Transport(double carMax, double capacidadMax, boolean refrigeracion, double costoKM) {
 		
 		//Comprueba que se cumpla con el IREP
@@ -31,6 +29,7 @@ public class Transport extends TransporteAbs{
 			throw new RuntimeException("El costo por kilometro no puede ser menor igual a cero");
 		}
 		
+		this.destino="''";
 		this.cargaMax=carMax;
 		this.auxCargaMax=carMax;
 		this.capacidadMax=capacidadMax;
@@ -77,7 +76,7 @@ public class Transport extends TransporteAbs{
 	}
 	
 	public void finalizarViaje() { //Se reinician todas las variables a como empezo el transporte
-		this.destino="";
+		this.destino="''";
 		this.costoTotal=0;
 		this.paquetes=new ArrayList<Paquet>();
 		this.capacidadMax=auxCapacidadMax;

@@ -63,20 +63,18 @@ public class Empresa {
 	public boolean incorporarPaquete(String destino, float peso, double volumen, boolean refrigeracion) {
 	
 		Paquet paqueteNuevo = new Paquet(destino,peso,volumen,refrigeracion);
-	
-		boolean almacenado=false;
 		
 		for(Deposit deposito : depositos) {
 			
 			if(deposito.getRefrigeracion()==paqueteNuevo.getRefrigeracion() //Se comprueba si el paquete debe de ir al deposito frio o normal
 					&& paqueteNuevo.getPeso()<=deposito.getCapacidadMax()) {  //Se comprueba si existe espacio en el deposito
 				deposito.agregarPaquete(paqueteNuevo);
-				almacenado=true;
+				return true;
 			}
 			
 		}
 		
-		return almacenado;  //Si no se encuentra ningun deposito que pueda almacenarlo entonces retorna false
+		return false;  //Si no se encuentra ningun deposito que pueda almacenarlo entonces retorna false
 		
 	}
 	
@@ -283,10 +281,6 @@ public class Empresa {
 		
 		if(!pertenece(id)) {
 			throw new RuntimeException("La id proporcionada no se encuentra registrada");
-		}
-		
-		for(String ids : transportes.keySet()) {
-			System.out.println(ids);
 		}
 		
 		for(String ids : transportes.keySet()) { //Se busca el transporte
