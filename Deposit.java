@@ -35,10 +35,34 @@ public class Deposit {
 	}
 	
 	public double cargarTransporte(Transport transporte) {
-		double cargaTotal=0;
 		
+		double volumenTotal=0;
 		
 		Iterator<Paquet> it = paquetes.iterator();
+		
+		if(this.getRefrigeracion() && this.esTercerizado()) {
+			double pesoTotal=0;
+			
+			
+			while(it.hasNext()) { //Se recorre todo el array de paquetes
+				
+				Paquet paquete = it.next();
+				
+				if(paquete.getDestino().equals(transporte.getDestino())&& //Se comprueba que el paquete se puede almacenar en el transporte
+						paquete.getPeso()<=transporte.getCarga() && 
+						paquete.getVolumen()<=transporte.getCapacidad()) {
+					
+					transporte.cargarPaquete(paquete);
+					volumenTotal+=paquete.getVolumen();
+					pesoTotal+=paquete.getPeso();
+					it.remove();
+				}
+				
+			}
+		
+			transporte.costoTonelada(calcularCosto(pesoTotal)); //Se le suma un extra al transporte por el tipo de deposito(Tercerizado, frio)
+			return volumenTotal;
+		}
 		
 		
 		while(it.hasNext()){ //Se recorre todo el array de paquetes
@@ -50,42 +74,16 @@ public class Deposit {
 					paquete.getVolumen()<=transporte.getCapacidad()) {
 				
 				transporte.cargarPaquete(paquete);
-				cargaTotal+=paquete.getVolumen();
-				it.remove();
-			}
-			
-		}
-		
-		return cargaTotal;  
-	}
-	
-	public double cargarTransporteTercerizFrio(Transport transporte) {
-		
-		double volumenTotal=0;
-		double pesoTotal=0;
-		
-		Iterator<Paquet> it = paquetes.iterator();
-		
-		
-		while(it.hasNext()) { //Se recorre todo el array de paquetes
-			
-			Paquet paquete = it.next();
-			
-			if(paquete.getDestino().equals(transporte.getDestino())&& //Se comprueba que el paquete se puede almacenar en el transporte
-					paquete.getPeso()<=transporte.getCarga() && 
-					paquete.getVolumen()<=transporte.getCapacidad()) {
-				
-				transporte.cargarPaquete(paquete);
 				volumenTotal+=paquete.getVolumen();
-				pesoTotal+=paquete.getPeso();
 				it.remove();
 			}
 			
 		}
-	
-		transporte.costoTonelada(calcularCosto(pesoTotal)); //Se le suma un extra al transporte por el tipo de deposito(Tercerizado, frio)
-		return volumenTotal;
+		
+		return volumenTotal;  
 	}
+	
+
 	
 	private double calcularCosto(double cargaTotal) {
 
@@ -131,7 +129,7 @@ public class Deposit {
 	public boolean getRefrigeracion() {
 		return refrigeracion;
 	}
-	public boolean noEsTercerizado(){
+	public boolean esTercerizado(){
 		return tercerizado;
 	}
 	public double getCapacidadMax() {

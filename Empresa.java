@@ -51,7 +51,7 @@ public class Empresa {
 	
 	public int agregarDepTercerizFrio(double capacidad, double costoPorTonelada) {
 		
-		Deposit nuevo = new Deposit(capacidad, true, false, costoPorTonelada); //Se ponen los valores true porque ya se sabe que es frio y tercerizado
+		Deposit nuevo = new Deposit(capacidad, true, true, costoPorTonelada); //Se ponen los valores true porque ya se sabe que es frio y tercerizado
 		
 		depositos.add(nuevo);
 		
@@ -219,13 +219,7 @@ public class Empresa {
 				for(Deposit deposito : depositos) {
 					//Se chequea el tipo de deposito
 					if(deposito.getRefrigeracion()==transportes.get(ids).getRefrigeracion()) {
-						
-						if(deposito.getRefrigeracion() && !deposito.noEsTercerizado()) {
-							cargaTotal += deposito.cargarTransporteTercerizFrio(transportes.get(ids));
-						}else {
-							cargaTotal += deposito.cargarTransporte(transportes.get(ids)); //El deposito se encarga de cargar el transporte
-						}
-						
+						cargaTotal += deposito.cargarTransporte(transportes.get(ids)); //El deposito se encarga de cargar el transporte	
 					}
 				}
 			}
