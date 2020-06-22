@@ -2,7 +2,7 @@ package empresa;
 
 import java.util.ArrayList;
 
-public class Transport extends TransportAbs{
+public abstract class Transport {
  
 	private ArrayList<Paquet> paquetes; 
 	private double cargaMax;

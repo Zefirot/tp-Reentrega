@@ -17,6 +17,15 @@ public class TestTP {
 		emp.agregarDestino("Parana", 30);
 	}
 
+	
+	@Test
+	public void testTransporte() {
+		
+		emp.agregarMegaTrailer("56", 10, 10, true, 50, 10, 5, 10);
+		
+		emp.asignarDestino("56", "Corrientes");
+	}
+	
 	@Test
 	public void testAgregarDeposito() {
 		int dep1, dep2;

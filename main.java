@@ -4,7 +4,7 @@ public class main {
 	public static void main(String[] args) {
 		double cargado;
 		Empresa e = new Empresa("30112223334","La Santafesina");
-		//System.out.println(e.toString());
+		System.out.println(e.toString());
 		System.out.println();
 		e.agregarDepTercerizFrio(40000, 10);
 		e.agregarDeposito(50000, true, true);
@@ -31,11 +31,11 @@ public class main {
 		e.incorporarPaquete("Mar del Plata", 200, 3, false);
 		e.incorporarPaquete("Rosario", 80, 2, false);
 		e.incorporarPaquete("Rosario", 250, 2, false);
-		//System.out.println(e.toString());
+		System.out.println(e.toString());
 		System.out.println();
 		cargado = e.cargarTransporte("AA333XQ");
 		System.out.println("Se cargaron "+cargado+" metros cubicos en el transp AA333XQ");
-		//System.out.println(e);
+		System.out.println(e);
 		e.iniciarViaje("AA333XQ");
 		System.out.println("Costo del viaje: "+e.obtenerCostoViaje("AA333XQ"));
 		System.out.println(e.toString());

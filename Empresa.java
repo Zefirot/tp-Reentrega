@@ -113,23 +113,8 @@ public class Empresa {
 				for(String lugar: destinos.keySet()) { //Despues se busca el destino para asignarlo
 					if(lugar.equals(destino)) {
 						
-						if(transportes.get(ids).getClass()==MegaTrailer.class) { //A continuacion se compara la clase para saber a que transporte se le asigna el destino
-							
-							MegaTrailer transporte = (MegaTrailer) transportes.get(ids);
-							transporte.asignarDestino(destino, destinos.get(lugar));
-					
-						}
-						
-						if(transportes.get(ids).getClass()==TrailerComun.class) {
-							
-							TrailerComun transporte = (TrailerComun) transportes.get(ids);
-							transporte.asignarDestino(destino, destinos.get(lugar));
-							
-							
-						}
-						
 						transportes.get(ids).asignarDestino(destino, destinos.get(lugar));
-						
+					
 					}
 				}
 				
@@ -250,25 +235,7 @@ public class Empresa {
 		for(String ids : transportes.keySet()) { //Se busca primero el transporte
 			
 			if(ids.equals(id)) {
-				//Luego se comparan las clases para saber el precio de ese transporte
-				if(transportes.get(ids).getClass()==Flete.class) {
-					
-					Flete transporte = (Flete) transportes.get(ids);
-					costoTotal = transporte.obtenerCosto();
-				}
-				
-				if(transportes.get(ids).getClass()==MegaTrailer.class) {
-
-					MegaTrailer transporte = (MegaTrailer) transportes.get(ids);
-					costoTotal = transporte.obtenerCosto();
-				}
-				
-				if(transportes.get(ids).getClass()==TrailerComun.class) {
-
-					TrailerComun transporte = (TrailerComun) transportes.get(ids);
-					costoTotal = transporte.obtenerCosto();
-				}
-				
+				costoTotal = transportes.get(ids).obtenerCosto();
 			}
 			
 		}
@@ -286,7 +253,6 @@ public class Empresa {
 		for(String ids : transportes.keySet()) { //Se busca el transporte
 			
 			if(ids.equals(id) && transportes.get(ids).tieneMercaderia()) {  //Se comprueba que el transporte cumpla con lo pedido
-				
 				transportes.get(ids).iniciarViaje();
 				return;
 			}
@@ -367,17 +333,7 @@ public class Empresa {
 		
 		return cadena.toString();
 	}
-	
-	public static void main(String[] args) {
-		
-		
-		Empresa e = new Empresa("30112223334","La Santafesina");
-		
-		
-		
-		
-	}
-	
+
 	
 	
 }
