@@ -168,7 +168,7 @@ public class Transport extends TransporteAbs{
 		return enViaje;
 	}
 	public boolean tieneMercaderia() {
-		return paquetes.size()!=0? true: false;
+		return paquetes.size()!=0;
 	}
 	public void costoTonelada(double costoTonelada) {
 		this.costoTonelada+=costoTonelada;

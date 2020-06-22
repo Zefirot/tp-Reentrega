@@ -62,14 +62,15 @@ public class Empresa {
 	
 	public boolean incorporarPaquete(String destino, float peso, double volumen, boolean refrigeracion) {
 	
-		Paquet nuevo = new Paquet(destino,peso,volumen,refrigeracion);
+		Paquet paqueteNuevo = new Paquet(destino,peso,volumen,refrigeracion);
 	
 		boolean almacenado=false;
 		
 		for(Deposit deposito : depositos) {
 			
-			if(deposito.getRefrigeracion()==nuevo.getRefrigeracion()) {
-				deposito.agregarPaquete(nuevo);
+			if(deposito.getRefrigeracion()==paqueteNuevo.getRefrigeracion() //Se comprueba si el paquete debe de ir al deposito frio o normal
+					&& paqueteNuevo.getPeso()<=deposito.getCapacidadMax()) {  //Se comprueba si existe espacio en el deposito
+				deposito.agregarPaquete(paqueteNuevo);
 				almacenado=true;
 			}
 			
@@ -224,7 +225,6 @@ public class Empresa {
 				}
 			}
 		}
-		
 		return cargaTotal;
 	}
 	
@@ -293,6 +293,9 @@ public class Empresa {
 				transportes.get(ids).iniciarViaje();
 				
 			}else {
+				//System.out.println(id);
+				//System.out.println(transportes.ge);
+				System.out.println(transportes.get(ids).tieneMercaderia());
 				throw new RuntimeException("El transporte solicitado no contiene mercaderia cargada");
 			}
 			

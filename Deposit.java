@@ -43,7 +43,6 @@ public class Deposit {
 		if(this.getRefrigeracion() && this.esTercerizado()) {
 			double pesoTotal=0;
 			
-			
 			while(it.hasNext()) { //Se recorre todo el array de paquetes
 				
 				Paquet paquete = it.next();
