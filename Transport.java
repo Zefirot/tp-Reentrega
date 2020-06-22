@@ -2,7 +2,7 @@ package empresa;
 
 import java.util.ArrayList;
 
-public class Transport {
+public class Transport extends TransporteAbs{
  
 	private ArrayList<Paquet> paquetes; 
 	private double cargaMax;
@@ -47,7 +47,6 @@ public class Transport {
 	}
 	
 	public void cargarPaquete(Paquet paquete) { //Modifica los valores de cargaMax y capacidadMax.
-		
 		paquetes.add(paquete);
 		cargaMax -= paquete.getPeso();
 		capacidadMax -= paquete.getVolumen();

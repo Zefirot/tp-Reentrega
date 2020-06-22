@@ -371,6 +371,16 @@ public class Empresa {
 		return cadena.toString();
 	}
 	
+	public static void main(String[] args) {
+		
+		
+		Empresa e = new Empresa("30112223334","La Santafesina");
+		
+		
+		
+		
+	}
+	
 	
 	
 }
