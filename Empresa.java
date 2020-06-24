@@ -230,7 +230,7 @@ public class Empresa {
 			throw new RuntimeException("El id proporcionado no se encuentra registrado");
 		}
 		
-		double costoTotal=0;
+		double costoTotal=0; 
 		
 		for(String ids : transportes.keySet()) { //Se busca primero el transporte
 			

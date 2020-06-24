@@ -1,6 +1,6 @@
 package empresa;
 
-public abstract class TransportAbs {
+public interface TransportInter {
 
 	public abstract void cargarPaquete(Paquet paquete);
 	
@@ -16,3 +16,5 @@ public abstract class TransportAbs {
 
 	public abstract double obtenerCosto();
 }
+	
+	
