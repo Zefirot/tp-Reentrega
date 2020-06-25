@@ -284,7 +284,7 @@ public class Empresa {
 		
 	}
 	
-	public String obtenerTransporteIgual(String id) { //--La complejidad de dicho algoritmo es de O(n)
+	public String obtenerTransporteIgual(String id) { //--La complejidad de dicho algoritmo es de O(n^3)
 		
 		Transport nuevo=null;
 		
@@ -299,8 +299,7 @@ public class Empresa {
 		for(String ids : transportes.keySet()) {//Luego se buscan otros transportes que tengan otros id --O(n)
 			
 			if(!id.equals(ids) //--O(1)
-					&& nuevo.getClass()==transportes.get(ids).getClass() 
-					&& nuevo.equals(transportes.get(ids))) {
+					&& nuevo.equals(transportes.get(ids))) { //Se llama al equals de la clase en cuestion --O(n^2)
 				return ids;
 			}
 

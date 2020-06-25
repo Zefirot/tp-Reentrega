@@ -14,8 +14,6 @@ public abstract class Transport implements TransportInter {
 	private String destino;
 	private double distancia;
 	private boolean enViaje;
-	private double pesoTotalPaquetes; //Con estas variables es mas facil sacar el precio total al finalizar todo
-	private double volumenTotalPaquetes;
 	private double costoTonelada;
 	private double costoTotal;
 
@@ -38,8 +36,6 @@ public abstract class Transport implements TransportInter {
 		this.paquetes=new ArrayList<Paquet>();
 		this.enViaje=false;
 		this.costoKM=costoKM;
-		this.pesoTotalPaquetes=0;
-		this.volumenTotalPaquetes=0;
 		this.costoTotal=0;
 		this.costoTonelada=0;
 		
@@ -49,8 +45,6 @@ public abstract class Transport implements TransportInter {
 		paquetes.add(paquete);
 		cargaMax -= paquete.getPeso();
 		capacidadMax -= paquete.getVolumen();
-		pesoTotalPaquetes += paquete.getPeso();
-		volumenTotalPaquetes += paquete.getVolumen();
 	}
 	
 	public void asignarDestino(String destino, double distancia){
@@ -95,18 +89,32 @@ public abstract class Transport implements TransportInter {
 		}
 		Transport other = (Transport) obj;
 		
-		if (this.obtenerPesoPaquetes() != other.obtenerPesoPaquetes() 
-				|| this.obtenerVolumenPaquetes() != other.obtenerVolumenPaquetes()) {
+		return paquetes.size()==other.paquetes.size() 
+				&& this.getDestino().equals(other.getDestino())
+				&& this.mismosPaquetes(other.paquetes);
+		
+	}
+	
+	private boolean mismosPaquetes(ArrayList<Paquet> paquetes) { //O(n^2)
+		
+		for(Paquet paquete1 : this.paquetes) { //Se recorre el primer array de paquetes --O(n)
 			
-			return false;
+			boolean sonIguales=false;
+			
+			for(Paquet paquete2 : paquetes) {  //Se recorre el array de paquetes que se le pasa como paramtro --O(n)
+				
+				sonIguales = sonIguales || paquete1.equals(paquete2);
+				
+			}
+			
+			if(sonIguales==false) {  //Si sonIguales no encuentre algun paquete igual significa que ya de por si existe un paquete diferente y los transportes son diferentes.
+				return false;
+			}
+			
 		}
 		
-		if (!this.getDestino().equals(other.getDestino())) {
-			
-			return false;	
-			
-		}
-		return true;
+		return true;	
+		
 	}
 	
 	@Override
@@ -142,13 +150,6 @@ public abstract class Transport implements TransportInter {
 	//Gets
 	public double obtenerCosto() {
 		return costoTotal+costoTonelada;  //Si es 0 costoTonelada entonces no influye en nada
-	}
-	
-	public double obtenerPesoPaquetes() {
-		return pesoTotalPaquetes;	
-	}
-	public double obtenerVolumenPaquetes() {
-		return volumenTotalPaquetes;
 	}
 	
 	public String getDestino(){

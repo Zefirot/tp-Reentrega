@@ -42,5 +42,17 @@ public class MegaTrailer extends Transport {
 	public double obtenerCosto() {
 		return super.obtenerCosto()+segCarga+costoComida+costoFijo; //El obtenerCosto pide el costo total a la clase padre y se le suma el extra
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(this.getClass()==obj.getClass()) {
+			return super.equals(obj);
+		}else {
+			return false;
+		}
+	
+	}
+	
 	
 }

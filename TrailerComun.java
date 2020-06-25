@@ -29,4 +29,16 @@ public class TrailerComun extends Transport{
 		return super.obtenerCosto()+segCarga;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(this.getClass()==obj.getClass()) {
+			return super.equals(obj);
+		}else {
+			return false;
+		}
+	
+	}
+	
+	
 }

@@ -33,6 +33,25 @@ public class Paquet {
 		
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		Paquet other = (Paquet) obj;
+		
+		return this.getPeso() == other.getPeso() 
+				&& this.getVolumen() == other.getVolumen()
+				&& this.getRefrigeracion() == other.getRefrigeracion()
+				&& this.getDestino().equals(other.getDestino());
+	}
+	
+	
+	
 	//Gets
 	public float getPeso() {
 		return peso;

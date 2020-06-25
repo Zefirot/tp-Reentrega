@@ -28,4 +28,16 @@ public class Flete extends Transport {
 	}
 	
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(this.getClass()==obj.getClass()) {
+			return super.equals(obj);
+		}else {
+			return false;
+		}
+	
+	}
+	
+	
 }
